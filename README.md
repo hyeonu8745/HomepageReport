@@ -1,46 +1,158 @@
-# 모듈 추가 
-npm install -g nodemon 
-
-# package.json 수정 
-npm run start 수정 
-
-# 테스트 소스 추가 
-/test
-     /users
-     /users/:userId/todos
-     /users/:userId/todos-page
-     /todoInsertView
-     /todoInsertPost
-     /todoModifyView/:todoId
-     /todoModifyPost/:todoId
-     /todoDeletePost/:todoId
+\# 📋 Node.js \& MySQL 게시판 프로젝트
 
 
-# echo "# nodejs-todos" >> README.md
-git init
-git add README.md
-git commit -m "first commit"
-git branch -M main
-git remote add origin git@github.com:jsryu7287/nodejs-todos.git
-git push -u origin main
+
+\# 📋 Node.js \& MySQL 게시판 프로젝트
 
 
-# 원격 URL을 HTTPS 방식으로 변경
-git remote set-url origin https://github.com/your-username/your-repo.git
-git remote -v
 
-# 토큰 발급 방법: 
-profile 우클릭 > settings > Developer settings > Personal access tokens > Tokens(classic) 
+> 과목명: \[데이터베이스 설계 및 구현]  
 
-생성 후 토큰을 복사 (단 한 번만 보여짐!)
+> 제출자: \[202245099] \[지현우]  
 
-# Git push 시 토큰 사용
-Username for 'https://github.com': your-username
-Password for 'https://github.com': <여기에 Personal Access Token 입력> 
+> 개발 기간: 2025.11 ~ 2025.11
 
-# 토큰을 캐시에 저장 (선택)
-Mac / Linux:
-git config --global credential.helper cache
 
-Windows (Git Credential Manager 사용):
-git config --global credential.helper manager-core
+
+\## 📖 프로젝트 개요
+
+Node.js(Express)와 MySQL 데이터베이스를 연동하여 구축한 사용자 기반 커뮤니티 게시판입니다.  
+
+기존의 Todo 리스트 예제를 기반으로 확장하여, 사용자 인증(로그인/회원가입)과 공지사항/자유게시판 분리 기능을 구현하였습니다.
+
+
+
+\## 🛠 사용 기술 (Tech Stack)
+
+\- Backend: Node.js, Express
+
+\- Database: MySQL (mysql2/promise)
+
+\- Frontend: EJS Template Engine, CSS
+
+\- Tools: Visual Studio Code, MySQL Workbench
+
+
+
+\## ✨ 주요 기능 (Key Features)
+
+
+
+\### 1. 게시판 시스템
+
+\- 게시판 구분: 탭을 통해 '공지사항'과 '자유게시판'을 분리하여 운영
+
+\- CRUD 구현: 게시물 작성, 조회, 수정, 삭제 기능 완벽 구현
+
+\- 권한 관리: 자신이 작성한 게시물만 수정/삭제 가능
+
+\- 조회수: 게시물 클릭 시 조회수 자동 증가
+
+\- 작성일: YYYY-MM-DD HH:mm 포맷으로 가독성 확보
+
+
+
+\### 2. 사용자 기능
+
+\- 회원가입/로그인: 사용자 정보 DB 저장 및 인증
+
+\- 세션 관리: express-session을 이용한 로그인 상태 유지
+
+
+
+\### 3. 편의 기능
+
+\- 검색: 게시물 제목 기준 검색 기능
+
+\- 페이지네이션: 한 페이지당 10개 게시물 표시, 이전/다음 페이지 이동
+
+
+
+\## ⚙️ 설치 및 실행 방법 (How to Run)
+
+
+
+이 프로젝트를 로컬 환경에서 실행하려면 다음 단계가 필요합니다.
+
+
+
+\### 1. 프로젝트 클론 (Clone)
+
+```bash
+
+git clone \[본인의 깃허브 레포지토리 주소]
+
+cd \[프로젝트 폴더명]> 개발 기간: 2025.11 ~ 2025.11
+
+
+
+\## 📖 프로젝트 개요
+
+Node.js(Express)와 MySQL 데이터베이스를 연동하여 구축한 사용자 기반 커뮤니티 게시판입니다.  
+
+기존의 Todo 리스트 예제를 기반으로 확장하여, 사용자 인증(로그인/회원가입)과 공지사항/자유게시판 분리 기능을 구현하였습니다.
+
+
+
+\## 🛠 사용 기술 (Tech Stack)
+
+\- Backend: Node.js, Express
+
+\- Database: MySQL (mysql2/promise)
+
+\- Frontend: EJS Template Engine, CSS
+
+\- Tools: Visual Studio Code, MySQL Workbench
+
+
+
+\## ✨ 주요 기능 (Key Features)
+
+
+
+\### 1. 게시판 시스템
+
+\- 게시판 구분: 탭을 통해 '공지사항'과 '자유게시판'을 분리하여 운영
+
+\- CRUD 구현: 게시물 작성, 조회, 수정, 삭제 기능 완벽 구현
+
+\- 권한 관리: 자신이 작성한 게시물만 수정/삭제 가능
+
+\- 조회수: 게시물 클릭 시 조회수 자동 증가
+
+\- 작성일: YYYY-MM-DD HH:mm 포맷으로 가독성 확보
+
+
+
+\### 2. 사용자 기능
+
+\- 회원가입/로그인: 사용자 정보 DB 저장 및 인증
+
+\- 세션 관리: express-session을 이용한 로그인 상태 유지
+
+
+
+\### 3. 편의 기능
+
+\- 검색: 게시물 제목 기준 검색 기능
+
+\- 페이지네이션: 한 페이지당 10개 게시물 표시, 이전/다음 페이지 이동
+
+
+
+\## ⚙️ 설치 및 실행 방법 (How to Run)
+
+
+
+이 프로젝트를 로컬 환경에서 실행하려면 다음 단계가 필요합니다.
+
+
+
+\### 1. 프로젝트 클론 (Clone)
+
+```bash
+
+git clone \[본인의 깃허브 레포지토리 주소]
+
+cd \[프로젝트 폴더명]
+

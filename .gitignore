@@ -1,1 +1,26 @@
+# 1. 의존성 모듈 (가장 중요! 용량이 크고 설치 가능하므로 제외)
 node_modules/
+
+# 2. 환경 변수 및 비밀 정보 (DB 비밀번호 등 보안상 제외)
+.env
+
+# 3. 로그 파일들
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+logs/
+*.log
+
+# 4. 운영체제 시스템 파일
+.DS_Store
+Thumbs.db
+
+# 5. 에디터/IDE 설정 파일 (선택 사항)
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# 6. 빌드 결과물 (혹시 빌드를 한다면)
+dist/
+build/

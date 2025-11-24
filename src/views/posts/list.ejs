@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/nav.css">
+    <style>
+        .board-table { width: 100%; border-collapse: collapse; margin-top: 20px; table-layout: fixed; /* 💡 너비 고정 */ }
+        .board-table th, .board-table td { border-bottom: 1px solid #ddd; padding: 10px; text-align: center; }
+        .board-table th { background-color: #f8f9fa; }
+        .board-table td.title { 
+            text-align: left; 
+            /* 제목이 너무 길면 ... 처리 */
+            white-space: nowrap; 
+            overflow: hidden; 
+            text-overflow: ellipsis; 
+        }
+        .search-box { margin-bottom: 20px; display: flex; justify-content: space-between; }
+        .btn-write { background-color: #28a745; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <%- include('../partials/nav', { title: title, user: user, currentType: currentType }) %>
+    <div class="container">
+        <h1><%= title %></h1>
+
+        <div class="search-box">
+            <form action="/posts" method="GET" style="display: flex; gap: 5px;">
+                <input type="hidden" name="type" value="<%= currentType %>">
+                <input type="text" name="search" placeholder="제목 검색..." value="<%= search %>">
+                <button type="submit">검색</button>
+            </form>
+            
+            <a href="/posts/new/create?type=<%= currentType %>" class="btn-write">
+                <%= currentType === 'notice' ? '공지 등록' : '글쓰기' %>
+            </a>
+        </div>
+
+        <table class="board-table">
+            <thead>
+                <tr>
+                    <th width="8%">번호</th>  <th width="42%">제목</th>  <th width="15%">작성자</th>
+                    <th width="25%">작성일</th> <th width="10%">조회</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if(posts.length > 0) { %>
+                    <% posts.forEach(function(post) { %>
+                        <tr>
+                            <td><%= post.id %></td>
+                            <td class="title">
+                                <a href="/posts/<%= post.id %>"><%= post.title %></a>
+                            </td>
+                            <td><%= post.author %></td>
+                            <td>
+                                <%= new Date(post.created_at).getFullYear() %>-<%= String(new Date(post.created_at).getMonth() + 1).padStart(2, '0') %>-<%= String(new Date(post.created_at).getDate()).padStart(2, '0') %> 
+                                <%= String(new Date(post.created_at).getHours()).padStart(2, '0') %>:<%= String(new Date(post.created_at).getMinutes()).padStart(2, '0') %>
+                            </td>
+                            <td><%= post.views %></td>
+                        </tr>
+                    <% }); %>
+                <% } else { %>
+                    <tr>
+                        <td colspan="5">게시물이 없습니다.</td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+
+        <div class="pagination">
+            <% if (totalPages > 1) { %>
+                <% if (currentPage > 1) { %>
+                    <a href="/posts?page=<%= currentPage - 1 %>&search=<%= search %>&type=<%= currentType %>">이전</a>
+                <% } %>
+                
+                <% for (let i = 1; i <= totalPages; i++) { %>
+                    <a href="/posts?page=<%= i %>&search=<%= search %>&type=<%= currentType %>" class="<%= i === currentPage ? 'active' : '' %>"><%= i %></a>
+                <% } %>
+
+                <% if (currentPage < totalPages) { %>
+                    <a href="/posts?page=<%= currentPage + 1 %>&search=<%= search %>&type=<%= currentType %>">다음</a>
+                <% } %>
+            <% } %>
+        </div>
+    </div>
+</body>
+</html>

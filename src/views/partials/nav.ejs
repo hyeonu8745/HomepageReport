@@ -3,9 +3,11 @@
         <%= title %>
     </div>
     <ul class="menu">
-        <li><a href="/todos" class="<%= title === 'Todo List' ? 'active' : '' %>">TODO 관리</a></li>
+        <li><a href="/posts?type=notice" class="<%= (typeof currentType !== 'undefined' && currentType === 'notice') ? 'active' : '' %>">공지사항</a></li>
+        <li><a href="/posts?type=free" class="<%= (typeof currentType !== 'undefined' && currentType === 'free') ? 'active' : '' %>">자유게시판</a></li>
+        
         <% if (user && user.email === 'admin@example.com') { %>
-            <li><a href="/admin" class="<%= title === 'Admin - User Management' ? 'active' : '' %>">사용자관리</a></li>
+            <li><a href="/admin">사용자관리</a></li>
         <% } %>
         <li><a href="/logout">로그아웃</a></li>
     </ul>
